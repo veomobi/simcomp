@@ -7,11 +7,12 @@ class Listener {
 }
 
 class Component {
-    constructor(selector,listener,values){
+    constructor(selector,listener,values,id){
         this.htmlElement = document.querySelector(selector);
         this.selector = selector;
         this.values = values;
         this.listener = listener;
+        this.id = id;
     }
 
     attachListener(){
@@ -28,5 +29,20 @@ class Component {
 
     renderIndependentValueOnHTML(value){
         this.htmlElement.innerHTML = value;
+    }
+}
+
+class ComponentManager {
+    constructor (components = {}) {
+        this.components = components;
+    }
+
+    add(component){
+        this.components[component.id] = component;
+        return this;
+    }
+
+    get(key){
+        return this.components[key];
     }
 }
