@@ -1,0 +1,42 @@
+#button-component {
+    width: 120px;
+    height: 60px;
+    border: 1px solid dodgerblue;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Verdana;
+
+    user-select: none;
+}
+
+#button-component:hover {
+    background-color: rgb(210, 210, 210);
+}
+
+#button-component:active {
+    background-color: rgb(152, 152, 234)
+}
+
+#input-component {
+    outline: none;
+    width: 300px;
+    height: 60px;
+
+    border: 1px solid dodgerblue;
+}
+
+#result {
+    border: 1px solid dodgerblue;
+    width: 120px;
+    height: 60px;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
