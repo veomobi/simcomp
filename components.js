@@ -45,4 +45,12 @@ class ComponentManager {
     get(key){
         return this.components[key];
     }
+
+    attachListeners(){
+        Object.keys(this.components).forEach(
+            key=>{
+                this.components[key].attachListener();
+            }
+        )
+    }
 }
