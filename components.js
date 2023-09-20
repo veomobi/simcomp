@@ -7,7 +7,7 @@ class Listener {
 }
 
 class Component {
-    constructor(selector,listener,values,styles,id){
+    constructor(selector = null,listener = null,values = null,styles = null,id){
         this.htmlElement = document.querySelector(selector);
         this.selector = selector;
         this.values = values;
@@ -35,11 +35,13 @@ class Component {
     }
 
     overwriteStyles(){
-        Object.keys(this.styles).forEach(
-            style=>{
-                this.htmlElement.style[style[0]] = style[1];
-            }
-        )
+        if (this.styles != null){
+            Object.keys(this.styles).forEach(
+                style=>{
+                    this.htmlElement.style[style[0]] = style[1];
+                }
+            )
+        }
     }
 }
 
