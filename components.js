@@ -7,20 +7,23 @@ class Listener {
 }
 
 class Component {
-    constructor(selector,listener,values,id){
+    constructor(selector,listener,values,styles,id){
         this.htmlElement = document.querySelector(selector);
         this.selector = selector;
         this.values = values;
         this.listener = listener;
         this.id = id;
+        this.styles = {}; // e.g. style = ["backgroundColor","red"];
     }
 
     attachListener(){
-        this.htmlElement.addEventListener(
-            this.listener.event,
-            ()=>{this.listener.func(this)}
-            // pass in context variable to function during component declaration to access the object in the function
-        )
+        if (this.listener != null){
+            this.htmlElement.addEventListener(
+                this.listener.event,
+                ()=>{this.listener.func(this)}
+                // pass in context variable to function during component declaration to access the object in the function 
+            )
+        }
     }
 
     renderObjectValueOnHTML(key){
@@ -29,6 +32,14 @@ class Component {
 
     renderIndependentValueOnHTML(value){
         this.htmlElement.innerHTML = value;
+    }
+
+    overwriteStyles(){
+        Object.keys(this.styles).forEach(
+            style=>{
+                this.htmlElement.style[style[0]] = style[1];
+            }
+        )
     }
 }
 
