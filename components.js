@@ -55,6 +55,10 @@ class ComponentManager extends Component{
         this.components = components;
     }
 
+    init(func = (ctx)=>{return args}) {
+        return func(this);
+    }
+
     add(component){
         this.components[component.id] = component;
         return this;
