@@ -7,7 +7,7 @@ class Listener {
 }
 
 class Component {
-    constructor(selector = null,listener = null,values = null,styles = null,id){
+    constructor(selector = null,listener = null,values = null,styles = null,id = null){
         this.htmlElement = document.querySelector(selector);
         this.selector = selector;
         this.values = values;
@@ -47,8 +47,9 @@ class Component {
     }
 }
 
-class ComponentManager {
-    constructor (components = {}) {
+class ComponentManager extends Component{
+    constructor (selector = null,listener = null,values = null,styles = null,id = null, components = {}) {
+        super(selector,listener,values,styles,id);
         this.components = components;
     }
 
