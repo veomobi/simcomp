@@ -13,7 +13,7 @@ class Component {
         this.values = values;
         this.listener = listener;
         this.id = id;
-        this.styles = styles; // e.g. styles = [["backgroundColor","red"]];
+        this.styles = styles; // e.g. styles = {"hidden":["display","none"]}
     }
 
     attachListener(){
@@ -36,13 +36,15 @@ class Component {
 
     overwriteStyles(index = undefined){
         if (this.styles != null && index == undefined){
-            this.styles.forEach(
+            Object.keys(this.styles).forEach(
                 style=>{
-                    this.htmlElement.style[style[0]] = style[1];
+                    let [attribute,value] = this.styles[style];
+                    this.htmlElement.style[attribute] = value;
                 }
             )
         } else if (this.styles != null){
-            this.htmlElement.style[this.styles[index][0]] = this.styles[index][1];
+            let [attribute, value] = this.styles[index];
+            this.htmlElement.style[attribute] = value;
         }
     }
 }

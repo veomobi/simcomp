@@ -1,3 +1,5 @@
+const _Manager = new ComponentManager();
+
 const clickEvent = new Listener(
     "click",
     (ctx)=>{
@@ -13,8 +15,9 @@ const inputEvent = new Listener(
     }
 )
 
-const button = new Component("#button-component",clickEvent, {test:0});
-button.attachListener();
+const button = new Component("#button-component",clickEvent, {test:0},{"hidden":["display","none"]}, "button");
 
-const input = new Component("#input-component",inputEvent,{});
-input.attachListener();
+const input = new Component("#input-component",inputEvent,{},null,"inp");
+
+_Manager.add(button).add(input);
+_Manager.attachListeners();
